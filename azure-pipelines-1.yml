@@ -38,6 +38,14 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+- stage: Deploy
+  displayName: Deploy
+  jobs:
+  - job: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
     - task: AzureWebAppContainer@1
       displayName: 'Azure Web App on Container Deploy'
       inputs:
